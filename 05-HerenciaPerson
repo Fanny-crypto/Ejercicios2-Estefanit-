@@ -1,0 +1,41 @@
+class Persona{
+    constructor (Nombre,Apellidos,Curp){
+        this.Nombre=Nombre;
+        this.Apellidos=Apellidos;
+        this.Curp=Curp;
+    }
+    mostrarInformacion(){
+        return console.log(`\nNombre:${this.Nombre} \nApellidos:${this.Apellidos} \nCurp:${this.Curp}`)
+    }
+}
+class Estudiante extends Persona{
+    constructor (Nombre,Apellidos,Curp,Carrera,Matricula,Semestre){
+        super(Nombre,Apellidos,Curp);
+        this.Carrera=Carrera;
+        this.Matricula=Matricula;
+        this.Semestre=Semestre;
+    }
+    InfoEstudiante(){
+     return console.log
+     (`${this.mostrarInformacion()}\nCarrera:${this.Carrera}, \nSemestre:${this.Semestre},\nMatricula es ${this.Matricula}`);
+    }
+}
+let alumno1= new Estudiante("Samara","G.C","RSGCTMRNSA5","ing. sistemas",2,"2354mt");
+alumno1.InfoEstudiante();
+
+
+
+class Docente extends Persona{
+    constructor (Nombre,Apellidos,Curp,puesto,clave,departamento){
+        super(Nombre,Apellidos,Curp);
+        this.puesto=puesto;
+        this.clave=clave;
+        this.departamento=departamento;
+    }
+    InfoProfesor(){
+     return console.log
+     (`${this.mostrarInformacion()}\npuesto:${this.puesto}, \nclave:${this.clave},\ndepartamento es ${this.departamento}`);
+    }
+}
+let Profesor1= new Docente("Gever","G.N","GVRGN100485","ing. sistemas",2,"2354mt");
+Profesor1.InfoProfesor();

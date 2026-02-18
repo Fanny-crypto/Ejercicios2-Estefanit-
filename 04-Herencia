@@ -1,0 +1,18 @@
+class Animal {
+    constructor(nombre,edad){
+        this.nombre=nombre;
+        this.edad=edad;
+    }
+    
+    describir(){
+        return `Soy ${this.nombre} y tengo ${this.edad}`
+    }
+}
+class Perro extends Animal{
+    ladrar(){
+        return console.log("Guau,Guauu");
+    }
+}
+let miFirulais=new Perro("Pibbyss",1);
+miFirulais.describir();
+miFirulais.ladrar();

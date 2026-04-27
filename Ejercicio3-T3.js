@@ -54,4 +54,3 @@ informaciondVehiculo(){
     Auto1.ObtenerDVehicl);
     Auto1.informaciondVehiculo();
     
-

@@ -1,0 +1,45 @@
+class Estudiante{
+    #nombre;
+    #calificacion;
+    constructor(nombre,calificacion){
+        this.#nombre=nombre;
+        this.#calificacion=calificacion;
+    }
+
+    //metodo privado
+    #validarCalificacion(valor){
+        if(valor>=70 && valor <=100){
+            this.#calificacion=valor;
+        }else{
+            console.log("Reprobado");
+        }if(valor>=70 && valor <=100){
+            this.#calificacion=valor;
+        }else{
+            console.log("Aprobado")
+        }
+    }
+    
+//Getter
+get obtenerCal(){
+    return this.#calificacion;
+}
+
+//Setter significa sobreescribiendo el valor de clificacion
+set newcalificacion(cal){
+    return this.#validarCalificacion(cal);
+}
+
+//metodo
+mostrarInformacion(){
+    console.log(`El estudiante es ${this.#nombre}
+y su calificacion es ${this.#calificacion}`)
+   }
+}
+
+const estudiante1=new Estudiante ("dandan",80);
+estudiante1.newcalificacion=67;
+estudiante1.obtenerCal;
+estudiante1.mostrarInformacion();
+
+
+

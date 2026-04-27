@@ -1,0 +1,94 @@
+// Clase padre
+class Cuenta {
+    constructor(numeroDeCuenta, saldo, tipo, nombre) {
+        this.numeroDeCuenta = numeroDeCuenta;
+        this.saldo = saldo;
+        this.tipo = tipo;
+        this.nombre = nombre;
+    }
+
+    deposito(monto) {
+        if(monto > 0) {
+            this.saldo += monto;
+            console.log(`DEPÓSITO REALIZADO. NUEVO SALDO: ${this.saldo}`);
+        }
+    }
+
+    retirar(monto) {
+        if(monto <= this.saldo) {
+            this.saldo -= monto;
+            console.log(`RETIRO EXITOSO. NUEVO SALDO: ${this.saldo}`);
+        } else {
+            console.log("SALDO INSUFICIENTE");
+        }
+    }
+
+    consultarSaldo() {
+        return this.saldo;
+    }
+}
+
+// Clase Ahorro
+class Ahorro extends Cuenta {
+    constructor(numeroDeCuenta, saldo, tipo, nombre, intereses = 0.1) {
+        super(numeroDeCuenta, saldo, tipo, nombre);
+        this.intereses = intereses;
+    }
+
+    aplicarIntereses() {
+        let interes = this.saldo * this.intereses;
+        this.saldo += interes;
+        console.log(`INTERÉS APLICADO: $${interes}. NUEVO SALDO: ${this.saldo}`);
+    }
+
+    // Sobrescribir retirar para que NO permita sobregiro
+    retirar(monto) {
+        if(monto <= this.saldo) {
+            this.saldo -= monto;
+            console.log(`RETIRO DE AHORRO EXITOSO. NUEVO SALDO: ${this.saldo}`);
+        } else {
+            console.log("NO PUEDES RETIRAR MÁS DEL SALDO DISPONIBLE");
+        }
+    }
+}
+
+// Clase Corriente
+class Corriente extends Cuenta {
+    constructor(numeroDeCuenta, saldo, tipo, nombre, limite = 2000) {
+        super(numeroDeCuenta, saldo, tipo, nombre);
+        this.limite = limite;
+    }
+
+    // Sobrescribir retirar para permitir sobregiro
+    retirar(monto) {
+        if(monto <= this.saldo + this.limite) {
+            this.saldo -= monto;
+            console.log(`RETIRO DE CORRIENTE EXITOSO (SOBREGIRO PERMITIDO). NUEVO SALDO: ${this.saldo}`);
+        } else {
+            console.log("LÍMITE DE SOBREGIRO EXCEDIDO");
+        }
+    }
+}
+
+// ARREGLO DE CLIENTES
+const clientes = [
+    new Ahorro("A107", 3000, "AHORRO", "Sofia Ariana", 0.1),
+    new Corriente("AB67", 2000, "CORRIENTE", "Josef", 2000),
+    new Ahorro("E380", 4000, "AHORRO", "Lili's", 0.1)
+];
+
+// RECORRER CON MAP
+clientes.map(cliente => {
+    console.log(`NOMBRE: ${cliente.nombre}, SALDO: $${cliente.consultarSaldo()}, TIPO: ${cliente.tipo}`);
+});
+
+// PROBAR OPERACIONES
+console.log("\n--- OPERACIONES DE PRUEBA ---");
+clientes[0].aplicarIntereses();  // Aplica interés a SOFIA
+clientes[1].retirar(3000);       // Retiro de CORRIENTE (usa sobregiro)
+clientes[2].retirar(5000);       // Intento fallido en AHORRO
+
+//en  ahorro se suman los intereses
+//el .map para recorrer el arreglo
+// para meter datos se utiliza el .push
+

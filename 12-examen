@@ -1,0 +1,57 @@
+//clase padre
+class Ventalinea {
+    static productos=[];
+    constructor(prendas,electronicos,tipo) {
+        this.prendas=prendas;
+        this.electronicos=electronicos;
+        this.tipo=tipo;
+    }
+    static registrar(productos){
+    this.Ventalinea.push(productos);
+        }
+    }
+
+
+
+// Clase ropa
+class Ropa extends Ventalinea {
+    constructor(camisas,pantalones,vestidos,CosturaEx = 0.1) {
+        super(camisas,pantalones,vestidos);
+        this.CosturaEx = CosturaEx;
+    }
+
+    CosturaExAplicar() {
+        let Costura = this.prendas * this.CosturaEx;
+        this.prendas += this.CosturaEx;
+        console.log(`interes aplicado por : ${this.CosturaEx}, Con el saldo: ${this.prendas}`);
+    }
+     
+}
+
+// Clase de los electronicos
+class electronicos extends Ventalinea {
+    constructor(telefonosmoviles,computadoras,televisores, garantiaProducto) {
+        super(telefonosmoviles,computadoras,televisores);
+        this.garantiaProducto = garantiaProducto;
+    }
+}
+
+// ARREGLO DE CLIENTES
+const clientes1 = [
+    new clientes1(),
+    new Ropa(),
+    new electronicos()
+];
+
+// RECORRER CON MAP
+clientes1.map(cliente => {
+    console.log(`camisas: ${cliente.camisas}, pantalones: $${cliente.pantalones}, vestidos: ${cliente.vestidos}`);
+});
+
+// PROBAR OPERACIONES
+console.log("\n--- OPERACIONES DE PRUEBA ---");
+clientes1[0].Ropa();  
+clientes1[1].electronicos();       
+clientes1[2].clientes();       
+
+//hacer de nuevo

@@ -1,4 +1,4 @@
-/**Biblioteca */
+ /**Biblioteca */
 /* class Material {
     constructor (titulo,autor){
         this.titulo=titulo;
@@ -48,7 +48,7 @@ revista1.devolver();
 console.log(revista1.mostrarInfoRevis()); */
 
 
-class ErrorLibroDisponible extends Error{
+export class ErrorLibroDisponible extends Error{
     constructor(message){
         super(message);
         this.nombre = ErrorLibroDisponible;
@@ -131,3 +131,4 @@ try{
 }catch(error){
     console.error("No se cumple con el objetivo:" , error.message);
 }
+

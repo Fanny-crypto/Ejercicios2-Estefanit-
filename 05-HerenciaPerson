@@ -39,3 +39,4 @@ class Docente extends Persona{
 }
 let Profesor1= new Docente("Gever","G.N","GVRGN100485","ing. sistemas",2,"2354mt");
 Profesor1.InfoProfesor();
+
